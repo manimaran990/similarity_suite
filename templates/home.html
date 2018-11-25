@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>home page</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">	
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">	
+	<link rel="stylesheet" type="text/css" href="static/app.css">
+	<link href="http://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
+
+	<!-- <script>
+		$(function() {		
+			$("#searchtext").keyup(function(){
+		    	var text = $(this).val();
+
+		    $.ajax({
+		      url: "/getsim",
+		      type: "get",
+		      data: {newtext: text},
+		      success: function(response) {
+		        $("#result_area").html(response);
+		      },
+		      error: function(xhr) {
+		        //Do Something to handle error
+		      }
+		    });
+			});
+		});
+	</script> -->
+	
+
+</head>
+<body>
+   <!-- nav bar -->
+	<nav class="navbar navbar-default navbar-fixed-top">
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-collapse" aria-expanded="false">
+			        <span class="sr-only">Toggle navigation</span>
+			        <span class="icon-bar"></span>
+			        <span class="icon-bar"></span>
+			        <span class="icon-bar"></span>
+		      	</button>								
+			</div>
+			<div class="collapse navbar-collapse" id="bs-collapse">
+			<ul class="nav navbar-nav navbar">
+				<li class="active"><a href="#">Home</a></li>
+				<li class><a href="newmodel">Create Model</a></li>
+			</ul>
+			<ul class="nav navbar-nav navbar-right">
+				<li><a href="#">About</a></li>
+				<li><a href="#">Contact</a></li>
+			</ul>
+			</div>
+		</div>
+	</nav>
+
+
+	<div class="container">
+		<div class="jumbotron">
+			<h2>Setence Similarity Suit</h2>
+		</div>
+	</div>
+	<div class="container">		
+		<form action="getsim" method="POST">
+			<!-- <input type="text" size=25 name="newtext" required>  -->			
+			<h4>Select model</h4>
+			{% for model in models %}
+				<input type="radio" name="options" value="{{ model }}"> {{ model }}<br>
+			{% endfor %}
+			<br>
+			<textarea id="searchtext" name="newtext" placeholder="Enter text to find the similiar tests" size="25" required="" style="margin: 0px; height: 62px; width: 537px;"></textarea>	<br>	
+			<a href="#" id=process_input><button class='btn btn-primary'>Submit</button></a>
+		</form>		
+		<br>		
+		<b>Model selected: </b><p>{{ model_name }}</p>
+		<b>Submitted text: </b><p>{{ subtext }}</p>		
+		<b>tokenized text: </b><p>{{ tokenizedtext }}</p>				
+		<br>
+		<b>Top 10 similiar text ids and their scores</b>
+		<div id="result_area">
+			<div class="list-group">			
+				{% for row in simresults %}	
+					<a href="#" class="list-group-item list-group-item-action>">{{ row }}</a>
+				{% endfor %}			
+			</div>
+		</div>
+	</div>
+
+</body>
+</html>
