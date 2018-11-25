@@ -10,8 +10,9 @@ from werkzeug.utils import secure_filename
 from sentsim_gen import *
 
 #constants
-UPLOAD_FOLDER = './files/'
-MODEL_FOLDER = './models/'
+dirname, filename = os.path.split(os.path.abspath(__file__))
+UPLOAD_FOLDER = os.path.join(dirname, 'files')
+MODEL_FOLDER = os.path.join(dirname, 'models')
 #allowed extension to upload
 ALLOWED_EXTENSIONS = set(['csv'])
 MODEL_SELECTED = ""
