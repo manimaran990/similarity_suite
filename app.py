@@ -10,8 +10,8 @@ from werkzeug.utils import secure_filename
 from sentsim_gen import *
 
 #constants
-UPLOAD_FOLDER = 'files/'
-MODEL_FOLDER = 'models/'
+UPLOAD_FOLDER = './files/'
+MODEL_FOLDER = './models/'
 #allowed extension to upload
 ALLOWED_EXTENSIONS = set(['csv'])
 MODEL_SELECTED = ""
