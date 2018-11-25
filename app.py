@@ -71,4 +71,4 @@ def newmodel():
 	return render_template('newmodel.html', filename=filename)
 
 if __name__ == '__main__':
-	app.run()
+	app.run(port = int(os.environ.get('PORT', 5000)))
