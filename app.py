@@ -11,8 +11,8 @@ from sentsim_gen import *
 
 #constants
 dirname, filename = os.path.split(os.path.abspath(__file__))
-UPLOAD_FOLDER = os.path.join(dirname, 'files')
-MODEL_FOLDER = os.path.join(dirname, 'models')
+UPLOAD_FOLDER = os.path.join(dirname, 'files/')
+MODEL_FOLDER = os.path.join(dirname, 'models/')
 #allowed extension to upload
 ALLOWED_EXTENSIONS = set(['csv'])
 MODEL_SELECTED = ""
