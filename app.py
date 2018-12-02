@@ -41,8 +41,9 @@ def trainmodel():
 @app.route("/getsim", methods=['POST','GET'])
 def getsim():
 	newtext = request.form['newtext']
+	model_selected_name = request.form['options']
 	try:
-		model_selected = os.path.join(app.config['MODEL_FOLDER'], request.form['options'])
+		model_selected = os.path.join(app.config['MODEL_FOLDER'], model_selected_name)
 	except Exception as e:
 		model_selected = MODEL_SELECTED
 
@@ -58,7 +59,7 @@ def getsim():
 
 	list_models = [ file for file in listdir(app.config['MODEL_FOLDER']) ]	
 
-	return render_template("home.html", simresults=results, subtext=newtext, tokenizedtext=new_sentence, models=list_models)
+	return render_template("home.html", simresults=results, subtext=newtext, tokenizedtext=new_sentence, models=list_models, model_name=model_selected_name)
 
 @app.route("/newmodel", methods=['POST', 'GET'])
 def newmodel():

@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>home page</title>
+	<title>Similarity Suite</title>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">	
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">	
 	<link rel="stylesheet" type="text/css" href="static/app.css">
 	<link href="http://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+	<script type="text/javascript" src="static/script.js"></script>
 
 
 	<!-- <script>
@@ -59,7 +60,7 @@
 
 	<div class="container">
 		<div class="jumbotron">
-			<h2>Setence Similarity Suit</h2>
+			<h2>Setence Similarity Suite</h2>
 		</div>
 	</div>
 	<div class="container">		
@@ -67,11 +68,11 @@
 			<!-- <input type="text" size=25 name="newtext" required>  -->			
 			<h4>Select model</h4>
 			{% for model in models %}
-				<input type="radio" name="options" value="{{ model }}"> {{ model }}<br>
+				<input type="radio" name="options" value="{{ model }}" required> {{ model }}<br>
 			{% endfor %}
 			<br>
 			<textarea id="searchtext" name="newtext" placeholder="Enter text to find the similiar tests" size="25" required="" style="margin: 0px; height: 62px; width: 537px;"></textarea>	<br>	
-			<a href="#" id=process_input><button class='btn btn-primary'>Submit</button></a>
+			<a href="#/" id=process_input><button class='btn btn-primary'>Submit</button></a>
 		</form>		
 		<br>		
 		<b>Model selected: </b><p>{{ model_name }}</p>
@@ -82,7 +83,19 @@
 		<div id="result_area">
 			<div class="list-group">			
 				{% for row in simresults %}	
-					<a href="#" class="list-group-item list-group-item-action>">{{ row }}</a>
+
+				<div id="class1" class="defect-container">
+					<a href="#/" class="list-group-item list-group-item-action">{{ row }}</a>
+				</div>
+
+				<div id="class1-container" class="testcase-container">
+				     	<div class="list-group">			
+	    					<a href="#/" class="list-group-item list-group-item-action>">Test case 1</a>	    					
+	    					<a href="#/" class="list-group-item list-group-item-action>">Test case 2</a>	    					
+	    					<a href="#/" class="list-group-item list-group-item-action>">Test case 3</a>	    					
+	    				</div>
+				</div>
+
 				{% endfor %}			
 			</div>
 		</div>
